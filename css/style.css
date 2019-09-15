@@ -1,0 +1,35 @@
+
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  display: flex;
+  height: 100%;
+}
+
+#map {
+  height: 100%;
+  width: 75%;
+}
+
+.listBlock {
+  min-width: 150px;
+  width: 25%;
+  height: 100%;
+  flex-grow: 3;
+  background-color: grey;
+}
+
+.list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.listItem {
+  width: 100%;
+  word-wrap: break-word;
+}
