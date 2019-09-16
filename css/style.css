@@ -6,6 +6,11 @@ html, body {
   padding: 0;
 }
 
+li, ul {
+  padding: 0;
+  margin: 0;
+}
+
 .app {
   display: flex;
   height: 100%;
@@ -22,6 +27,7 @@ html, body {
   height: 100%;
   flex-grow: 3;
   background-color: grey;
+  overflow: scroll;
 }
 
 .list {
@@ -30,6 +36,9 @@ html, body {
   padding: 0;
 }
 .listItem {
+  display: block;
   width: 100%;
   word-wrap: break-word;
+  margin-bottom: 15px;
+  cursor: pointer;
 }
