@@ -26,7 +26,10 @@
       <div class="listBlock">
         <h2>Список приходских сел</h2>
         <ul class="list">
-          <li class="listItem" v-for="location in data.locations">
+          <li class="listItem"
+            v-for="location in data.locations"
+            v-on:click="markerCentered(location)"
+            >
             {{location.name}}
           </li>
           <!-- <li class="listItem">
@@ -81,6 +84,7 @@
         };
 
         var map = new google.maps.Map(document.getElementById('map'), opt);
+        console.log(map);
 
         var marker, i, coord;
         // for (i = 0; i < locations.length; i++) {
@@ -108,10 +112,10 @@
             // label: location.name
           })
         });
-        console.log(markers);
+        // console.log(markers);
 
         for (var i = 0; i < markers.length; i++) {
-          console.log(markers[i]);
+          // console.log(markers[i]);
         }
 
         var infowindow = new google.maps.InfoWindow({
@@ -133,7 +137,7 @@
               lat: data.locations[i].pos[0],
               lng: data.locations[i].pos[1]
             });
-            infowindow.open(map, markers[i]);
+            infowindow.open(map);
             // currentString = data.locations[i].name
             // console.log(data.locations[i].name)
           })
@@ -218,6 +222,20 @@
         } else {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
+        }
+
+        window.setCenter = function (location) {
+          console.log(location.pos);
+          map.setCenter({
+            lat: location.pos[0],
+            lng: location.pos[1]
+          });
+          map.setZoom(location.zoom || 12);
+          infowindow.setPosition({
+            lat: location.pos[0],
+            lng: location.pos[1]
+          });
+          infowindow.open(map);
         }
       }
     </script>

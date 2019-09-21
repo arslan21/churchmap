@@ -3,18 +3,15 @@ var appVue = new Vue({
   data: data,
 
   methods: {
-
+    markerCentered: function (location) {
+      console.log(location);
+      console.log(markers);
+      // var map = document.querySelector('#map')
+      window.setCenter(location);
+    }
   },
 
   computed: {
-    nameInList() {
-      return this.name + " (" + this.altName + ")"
-    },
-    image() {
-      return this.variants[this.selectedVariant].variantImage;
-    },
-    inStock() {
-      return this.variants[this.selectedVariant].variantQuantity;
-    }
+
   }
 })
