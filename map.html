@@ -32,18 +32,6 @@
             >
             {{location.name}}
           </li>
-          <!-- <li class="listItem">
-            Туваны
-          </li>
-          <li class="listItem">
-            Ходары
-          </li>
-          <li class="listItem">
-            Штанаши
-          </li>
-          <li class="listItem">
-            Раскильдино
-          </li> -->
         </ul>
       </div>
       <div id="map"></div>
@@ -54,30 +42,19 @@
       var marker;
 
       function initMap() {
-        // var pos = {lat: 55.488290, lng: 47.328645};
 
         // var churchIcon = {
-        //   path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+        //   path: 'M49 22.396l-23-10.88v-4.516h3v-2h-3v-4h-2v4h-3v2h3v4.516l-16.058 7.605-6.942 3.275v1.604h7v25h12v-15h10v15h12v-25h7z',
         //   fillColor: 'yellow',
         //   fillOpacity: 0.8,
+        //   width: 25,
+        //   height: 25,
         //   scale: 1,
         //   strokeColor: 'gold',
-        //   strokeWeight: 14
+        //   strokeWeight: 1
         // }
-        //
-        // var image = {
-        //   // url: 'img/christian.svg',
-        //   url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-        //   // This marker is 20 pixels wide by 32 pixels high.
-        //   size: new google.maps.Size(20, 32),
-        //   // The origin for this image is (0, 0).
-        //   origin: new google.maps.Point(0, 0),
-        //   // The anchor for this image is the base of the flagpole at (0, 32).
-        //   anchor: new google.maps.Point(0, 32)
-        // };
 
         var opt = {
-          // center: {lat: data.pos[0], lng: data.pos[1]},
           center: {lat: 54.325782, lng: 48.392605},
           zoom: 6,
           mapTypeId: 'roadmap'
@@ -87,52 +64,29 @@
         console.log(map);
 
         var marker, i, coord;
-        // for (i = 0; i < locations.length; i++) {
-        //   coord = locations[i];
-        //   marker = new google.maps.Marker({
-        //     position: new google.maps.LatLng(coord.pos[0], coord.pos[1]),
-        //     map: map
-        //   });
-        //
-        //   google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        //     return function() {
-        //       infoWindow.setContent(locations[i].name + " " + locations[i].info);
-        //
-        //       infoWindow.open(map, marker);
-        //
-        //     }
-        //   })(marker, i));
-        // }
-
 
         var contentString;
         markers = data.locations.map(function(location, i) {
-          // debugger;
           var image;
           if (location.enable) {
+            // image = churchIcon
             image = 'img/church.svg'
           } else {
             image = 'img/church.svg' //Изминение цвета иконки?
           }
           return new google.maps.Marker({
             position: new google.maps.LatLng(location.pos[0], location.pos[1]),
-            // label: location.name
             icon: image
           })
         });
-        // console.log(markers);
 
-        for (var i = 0; i < markers.length; i++) {
-          // console.log(markers[i]);
-        }
+        // for (var i = 0; i < markers.length; i++) {
+        // }
 
         var infowindow = new google.maps.InfoWindow({
-          // content: contentString
         });
-        // //
 
 
-        // function adding(marker, info)
         for (let i = 0; i < markers.length; i++) {
           markers[i].addListener('click', function () {
             infowindow.setContent(
@@ -146,8 +100,6 @@
               lng: data.locations[i].pos[1]
             });
             infowindow.open(map);
-            // currentString = data.locations[i].name
-            // console.log(data.locations[i].name)
           })
         }
         //
