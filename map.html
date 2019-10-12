@@ -107,9 +107,17 @@
 
         var contentString;
         markers = data.locations.map(function(location, i) {
+          // debugger;
+          var image;
+          if (location.enable) {
+            image = 'img/church.svg'
+          } else {
+            image = 'img/church.svg' //Изминение цвета иконки?
+          }
           return new google.maps.Marker({
             position: new google.maps.LatLng(location.pos[0], location.pos[1]),
             // label: location.name
+            icon: image
           })
         });
         // console.log(markers);
